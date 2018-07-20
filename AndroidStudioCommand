@@ -1,0 +1,54 @@
+### Build -> Analyze Apk -> See the size of everything.
+
+### emulator
+  emulatorDebug
+
+  #if emulator offline:
+    1. try cmd "adb kill-server" to clear port for emulator
+    2. in emulator's developer option, enable debugger and revoke
+
+### Android Studio IDE
+    Import project from..(git or)
+    Goto, auto-complete
+
+    Command + / : comment
+    Shift + option or command + up/down : move line(s) up/down
+    Shift + F6 : rename
+    Command + [/] : goto prev/next
+    Command + Shift + a -> annotate
+    F1: document
+    F2: find next error
+    Dependency: ./gradlew "Project":dependencies
+
+    Option + mouse drag: area to edit together
+    Option + shift + mouse select: lines to edit together
+    Ctrl + w: close current file
+    command + shift + F8: break point
+
+    build:
+    ./gradlew "Module":assembleDebug --debug
+    ./gradlew "Module":assembleDebug --debug
+
+    build for debug:
+    ./gradlew :"Project":transformClassesAndResourcesWithProguardForDevelop >> log.txt --debug
+    ./gradlew :"Project":installDevelopDebug >> log.txt --debug
+
+### build single module only
+    gradlew.bat assembleDebug -a -b path/to/module/build.gradle
+    -a only builds the component and does not rebuild its dependencies
+    -b to specify another Gradle build file. In this case, the module's instead of the top-level build.gradle.
+    Or just cd to the module directory and run gradle assembleDebug -a there.
+
+### Inspect activity list
+  ### For only certain app
+  adb shell dumpsys activity -package "Package Name"
+  ### For all active
+  adb shell dumpsys activity activities
+
+
+### Inspect memory left
+adb shell vmstat
+# procs  memory                       system          cpu
+# r  b    free mapped   anon   slab    in   cs  flt  us ni sy id wa ir
+# 1  0   99120  55400 618680  25600  2207 4089    0   6  0  9 84  0  0
+

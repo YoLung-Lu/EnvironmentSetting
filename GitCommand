@@ -1,0 +1,118 @@
+
+### Checkout / download
+  ### New Project
+  git clone https://github.com/YoLung-Lu/LiarPoker.git
+  ### checkout a remote branch
+  git checkout test
+
+  ### checkout a remote branch (switch first)
+  git checkout branchName
+  ### create local branch base on a existBranch (go to existBranch then new a branch)
+  git checkout existBranch
+  git checkout -b "sonLocalBranchName"
+  ### create remote branch -> create local branch first, then
+  git push -u origin localBranchName
+  ### checkout to a tag commit (normally release tag)
+  g co v6.19.9
+
+
+### Store local changes
+  git stash
+
+### revert commit
+  git revert <commit>
+
+### submodule
+  git submodule update --init
+
+### Inspect every remote branch
+  ### know what branches remote have before checkout.
+  git fetch
+  git fetch origin
+
+### Switch between branch
+  ### Create local branch
+  git branch "local_branch_name"
+  ### Switch to it
+  git checkout "local_branch_name"
+
+### Commit
+  ### Commit items from source tree
+  sourceTree commit (with name, #)
+  ### Push to GitHub
+  git push origin "remote name"
+
+### Delete local branch
+  git branch -d the_local_branch
+### Force delete local branch
+  git branch -D the_local_branch
+
+### Rebase (one way to solve conflict)
+  ### With the rebase command, you can take all the changes
+  ### that were committed on one branch and replay them on another one.
+  ### Update root for current branch
+         A---B---C topic                       A'--B'--C' topic
+        /                   TO                /
+    D---E---F---G master         D---E---F---G master
+
+  ### rebase from another branch
+  git rebase origin/"remote branch name"
+
+### Cannot automatically merge (need to rebase and solve conflict in local)
+  1. git rebase origin/dev_6
+  2. See into source tree, fix conflicts (NO NEED OF commit)
+  3. git rebase --continue
+  4. git push -f origin "your branch" (force push to your branch)
+  5. Create PR
+
+### PR -> master merge other branch and cost conflict
+  1. git merge origin/dev_6
+  2. git status (should see files that conflict)
+  3. Fix conflicts
+  4. Add files and then commit again (all files will be in the list)
+  5. git push ...
+
+### Blame
+
+### Create new remote branch from local branch
+  1. git checkout -b "new branch name"
+  2. git push origin "new branch name"
+
+### Stuck at "pull" when remote branch was "rebase"
+  1. git reset --hard
+  2. git fetch origin
+  3. git reset --hard origin/"remote_branch_name"
+
+### Redo from commit (not push yet)
+  ### check how many commits
+  1. git log
+  ### reset commit contents ("x": (int) number of commits to reset )
+  ### that means the commit will back to local
+  2. git reset HEAD~"x"
+
+### Cherry-pick
+  1. No need of merged node
+  2. Leave commend after cp
+### Multiple cp, include start and end
+  1. git cp "commitStart"^.."commitEnd"
+
+
+### Revert merge
+  1. git revert "from" -m "to"
+
+==== GitHub ====
+T: file history
+Compare version changes:
+  {older-tag}...{newer-tag}
+  /compare/vold...vnew
+  https://github.com/"RepoName"/"ProjectName"/compare/"version1"..."version2"
+  {branch}...{other-branch}
+
+### Git install path
+/usr/local/git/
+  ### by command
+  which git
+
+
+### Print Dependency tree into a file temp.txt
+./gradlew "Project":dependencies >> temp.txt

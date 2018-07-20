@@ -1,0 +1,23 @@
+[core]
+	excludesfile = /Users/luyolung/.gitignore_global
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path =
+[mergetool "sourcetree"]
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
+[user]
+	name = Lu YoLung
+	email = smileforyou100@gmail.com
+[commit]
+	template = /Users/luyolung/.stCommitMsg
+[alias]
+  st = status
+  ci = commit
+  cp = cherry-pick
+  co = checkout
+  br = branch
+  re = rebase
+  f  = fetch origin
+  p  = pull origin
+  g  = git
